@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia'
 import axios from 'axios'
+import { defineStore } from 'pinia'
 
 interface Page {
   id: number
@@ -26,7 +26,7 @@ export const usePagesStore = defineStore('pages', {
     async fetchPages() {
       this.loading = true
       try {
-        const response = await axios.get<{ pages: Page[] }>('http://localhost:3000/pages')
+        const response = await axios.get<Page[]>('http://localhost:3000/pages')
         this.pages = response.data
         this.error = null
       } catch (err) {
